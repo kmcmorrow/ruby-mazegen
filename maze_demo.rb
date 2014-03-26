@@ -6,13 +6,15 @@ class MazeWindow < Gosu::Window
   WINDOW_HEIGHT = 600
   FULL_SCREEN = false
 
+  MAZE_WIDTH = 32
+  MAZE_HEIGHT = 24
   CELL_SIZE = 20
   COLOR = Gosu::Color::YELLOW
 
   def initialize
     super WINDOW_WIDTH, WINDOW_HEIGHT, FULL_SCREEN
     self.caption = 'Maze'
-    @maze = Maze.new(32, 24).maze
+    @maze = Maze.new(MAZE_WIDTH, MAZE_HEIGHT).maze
   end
 
   private
@@ -48,6 +50,13 @@ class MazeWindow < Gosu::Window
 
   def needs_cursor?
     true
+  end
+
+  def button_down(id)
+    case button_id_to_char(id)
+    when 'm'
+      @maze = Maze.new(MAZE_WIDTH, MAZE_HEIGHT).maze
+    end
   end
 end
 
