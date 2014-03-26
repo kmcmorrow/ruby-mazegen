@@ -49,7 +49,7 @@ class Maze
   def generate_maze
     cell_stack = []
     total_cells = @maze.length * @maze[0].length
-    current_cell = { x: 0, y: 0 }
+    current_cell = { x: rand(@maze[0].length), y: rand(@maze.length) }
     visited_cells = 1
     
     while visited_cells < total_cells
